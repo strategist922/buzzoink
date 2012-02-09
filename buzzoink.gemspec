@@ -19,9 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency "addressable", "~> 2.2"
   s.add_dependency "andand", "~> 1.3"
   s.add_dependency "fog", "~> 1.1.2"
-  s.add_dependency "sys-proctable"
 
-  s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "webmock"
   s.add_development_dependency "fabrication"
