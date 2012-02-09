@@ -33,7 +33,7 @@ describe Buzzoink::Configuration do
   it 'should return the epoch in correct format' do
     d = Date.today.ago(3.weeks)
     @config.epoch = d
-    @config.epoch.should == d.strftime("%Y-%m-%d")
+    @config.epoch.should == d.iso8601
   end
 
   it 'should get 3 instance groups on production settings' do

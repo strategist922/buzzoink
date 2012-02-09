@@ -38,7 +38,7 @@ module Buzzoink
     # Full name of the process
     def full_name *args
       suffix_options = args.extract_options!
-      
+
       "#{name_prefix} : #{name}".tap do | str |
         unless suffix_options.blank?
           suffix = " " + suffix_options.map { | k, v | "#{k} => #{v}" }.join(", ")
@@ -47,21 +47,21 @@ module Buzzoink
       end
     end
 
-    # Sets the a backstop date for all EMR
-    # queries.  Set it to a date before which
+    # Sets the a backstop datetime for all EMR
+    # queries.  Set it to a time before which
     # you care nothing about.
     #
     # @example
     #   Buzzoink.configure do | c | 
-    #     c.epoch = Date.today.ago(3.weeks)
+    #     c.epoch = DateTime.today.ago(3.weeks)
     #   end
     #
     # @default One day ago
     #
     attr_writer :epoch
     def epoch
-      @epoch ||= Date.today.ago(1.day)
-      @epoch.strftime("%Y-%m-%d")
+      @epoch ||= DateTime.now.ago(1.day)
+      @epoch.iso8601
     end
 
     # Sets the max number of on demand slaves

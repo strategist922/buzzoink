@@ -1,23 +1,24 @@
-require 'spec_helper'
+ require 'spec_helper'
 
 describe Buzzoink::Job, :vcr do
   # around(:each) do | tst |
   #   VCR.use_cassette("jobs",
   #     &tst)
   # end
+  before(:all) do
+    @config = Buzzoink.configure do | c | 
+      c.aws_access_key_id = 'accesskey'
+      c.aws_secret_access_key = 'secretkey'
+      c.epoch = DateTime.now.ago(1.hour)
+    end
+  end
 
   before(:each) do
-    @config = Buzzoink.configure do | c | 
-      c.aws_access_key_id = 'AKIAJTRVHA3SHWHP6HSA'
-      c.aws_secret_access_key = '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'
-      c.epoch = Date.today.ago(1.day)
-    end
     Buzzoink::Job.kill_all
   end
 
   describe 'starting and terminating a job' do
     before(:each) do
-      Buzzoink::Job.kill_all
       @job = Buzzoink::Job.start(:type => :hive)
     end
 
@@ -80,7 +81,7 @@ describe Buzzoink::Job, :vcr do
 
   it 'should find all buzzoink managed jobs' do
     jobs = Buzzoink::Job.get_managed_jobs
-    jobs.size.should == 30
+    jobs.size.should == 19
   end
 
   it 'should be able to get the current job if one is running' do
@@ -92,40 +93,5 @@ describe Buzzoink::Job, :vcr do
   it 'should have a specialty method per type' do
     Buzzoink::Job.should_receive(:find_or_start).with(:type => :hive)
     Buzzoink::Job.find_or_start_hive
-  end
-
-  describe 'instance methods' do
-    before(:each) do\
-      @job = Buzzoink::Job.new(job_hash)
-    end
-
-    it 'should refresh be able to refresh itself' do
-      Buzzoink::Job.should_receive(:get).with(@job.id).and_return(@job)
-      @job.refresh!
-    end
-
-    it 'should report its state' do
-      @job.state.should == 'WAITING'
-    end
-
-    it 'should report whether its ready' do
-      @job.ready?.should be_true
-    end
-
-    it 'should report if its not ready' do
-      new_hash = job_hash
-      new_hash['ExecutionStatusDetail']['State'] = 'BOOTSTRAPPING'
-
-      job = Buzzoink::Job.new(new_hash)
-      job.ready?.should_not be_true
-    end
-
-    it 'should be able to report its DNS' do
-      @job.public_dns.should == 'ec2-50-16-148-218.compute-1.amazonaws.com'
-    end
-
-    it 'should be able to report its termination status' do
-      @job.termination_protected?.should be_false
-    end
   end
 end
