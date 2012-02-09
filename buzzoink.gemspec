@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = Buzzoink::VERSION
   s.authors     = ["Chris Hagar", "Bob Briski"]
   s.email       = ["chagar@raybeam.com", "bbriski@raybeam.com"]
-  s.homepage    = "TODO"
+  s.homepage    = "https://github.com/Raybeam/buzzoink"
   s.summary     = "Start hive or pig processes in EMR"
-  s.description = "TODO: Description of Buzzoink."
+  s.description = "Simple interface for Pig, Hive and Streaming over EMR."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 

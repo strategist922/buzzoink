@@ -1,3 +1,48 @@
 = Buzzoink
 
-This project rocks and uses MIT-LICENSE.
+A very simple interface for Amazon's EMR service.  It will start interactive Hive, Pig and Streaming sessions.  
+It only exposes a few pieces of information like state, name and DNS name for the master machine.  It also allows only a few 
+machine configurations
+
+== Cluster sizes
+
+[test] Very small, 1 master and 1 slave.  It basically for running tests on the gem
+
+[development] Around 10 slaves.  It's for test small jobs
+
+[production] At least 20 machines.  Up to 60 if the spot reservations come online
+
+
+== Examples
+
+=== Configuration
+
+For a full list of configuration options, check the documentation.
+
+  Buzzoink.configure do | c |
+    c.aws_access_key_id = 'accesskey'
+    c.aws_secret_access_key = 'secretkey'
+    c.instance_settings = :production
+    c.max_machines = 20 # This will be 60 if spot reservations fire
+    c.key_name = 'mysecretkey'
+    c.epoch = DateTime.now.ago(1.hour)
+  end
+
+
+=== Start a hive instance
+
+You can also start a Pig or Streaming instance
+
+  hive = Buzzoink::Job.find_or_start_hive
+  begin
+    sleep(20)
+  end until hive.ready?
+  puts "Connect here: #{hive.public_dns}"
+
+=== Kill all jobs managed by Buzzoink
+
+This kills jobs of all types (e.g. Hive, Pig, etc)
+
+  Buzzoink::Job.kill_all
+
+This project uses MIT-LICENSE.
