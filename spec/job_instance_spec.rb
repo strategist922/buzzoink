@@ -20,6 +20,14 @@ describe 'Buzzoink::Job instance methods' do
     @job.ready?.should be_true
   end
 
+  it 'should report whether its starting' do
+    new_hash = job_hash
+    new_hash['ExecutionStatusDetail']['State'] = 'BOOTSTRAPPING'
+
+    job = Buzzoink::Job.new(new_hash)
+    job.starting?.should be_true
+  end
+
   it 'should report if its not ready' do
     new_hash = job_hash
     new_hash['ExecutionStatusDetail']['State'] = 'BOOTSTRAPPING'

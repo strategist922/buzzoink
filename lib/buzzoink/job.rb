@@ -247,6 +247,12 @@ module Buzzoink
       READY_STATES.include?(state)
     end
 
+    # Boolean for determining whether the instance is
+    # starting up
+    def starting?
+      PENDING_STATES.include?(state)
+    end
+
     def steps
       body['Steps']
     end

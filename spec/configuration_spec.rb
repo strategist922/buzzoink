@@ -31,9 +31,21 @@ describe Buzzoink::Configuration do
   end
 
   it 'should return the epoch in correct format' do
-    d = Date.today.ago(3.weeks)
+    d = DateTime.now.ago(3.weeks)
     @config.epoch = d
     @config.epoch.should == d.iso8601
+  end
+
+  # I'm not sure why, but some versions of DateTime do not
+  # have the correct method.  We'll have to cast to Time
+  it 'should not use DateTime for iso8601 formatting' do
+    d = DateTime.now.ago(1.hour)
+    d.stub(:iso8601).and_raise NoMethodError
+    d.stub(:respond_to?).with(:iso8601).and_return(false)
+
+    t = Time.parse(d.to_s).iso8601
+    @config.epoch = d
+    @config.epoch.should == t
   end
 
   it 'should get 3 instance groups on production settings' do

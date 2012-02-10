@@ -61,6 +61,9 @@ module Buzzoink
     attr_writer :epoch
     def epoch
       @epoch ||= DateTime.now.ago(1.day)
+      unless @epoch.respond_to?(:iso8601)
+        @epoch = Time.parse(@epoch.to_s)
+      end
       @epoch.iso8601
     end
 
