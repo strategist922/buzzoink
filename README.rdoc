@@ -25,7 +25,7 @@ For a full list of configuration options, check the documentation.
     c.aws_access_key_id = 'accesskey'
     c.aws_secret_access_key = 'secretkey'
     c.instance_settings = :production
-    c.max_machines = 20 # This will be 60 if spot reservations fire
+    c.max_instances = 20 # This will be 60 if spot reservations fire
     c.key_name = 'mysecretkey'
     c.epoch = DateTime.now.ago(1.hour)
   end
