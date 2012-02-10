@@ -9,7 +9,7 @@ describe Buzzoink::Job, :vcr do
     @config = Buzzoink.configure do | c | 
       c.aws_access_key_id = 'accesskey'
       c.aws_secret_access_key = 'secretkey'
-      c.epoch = DateTime.now.ago(1.hour)
+      c.epoch = DateTime.now.ago(5.minutes)
     end
   end
 
@@ -58,7 +58,23 @@ describe Buzzoink::Job, :vcr do
   end
 
   describe 'job flow steps' do
+    it 'for hive job' do
+      hive = Buzzoink::Job.start_hive
 
+      hive_step = hive.steps.first
+      hive_step['StepConfig']['HadoopJarStepConfig']['Args'].should == Buzzoink::Job.hive_step['HadoopJarStep']['Args']
+    end
+
+    it 'for pig job' do
+      pig = Buzzoink::Job.start_pig
+
+      pig_step = pig.steps.first
+      pig_step['StepConfig']['HadoopJarStepConfig']['Args'].should == Buzzoink::Job.pig_step['HadoopJarStep']['Args']
+    end
+
+    pending 'for streaming job' do
+      strm = Buzzoink::Job.start_streaming
+    end
   end
 
   it 'should have a method to start a hive job' do
@@ -85,7 +101,7 @@ describe Buzzoink::Job, :vcr do
 
   it 'should find all buzzoink managed jobs' do
     jobs = Buzzoink::Job.get_managed_jobs
-    jobs.size.should == 19
+    jobs.size.should == 2
   end
 
   it 'should be able to get the current job if one is running' do

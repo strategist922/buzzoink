@@ -3,7 +3,7 @@ http_interactions:
 - request: 
     method: post
     uri: https://elasticmapreduce.amazonaws.com/
-    body: AWSAccessKeyId=accesskey&Action=DescribeJobFlows&CreatedAfter=2012-02-09T13%3A44%3A33-08%3A00&SignatureMethod=HmacSHA256&SignatureVersion=2&Timestamp=2012-02-09T22%3A44%3A53Z&Version=2009-03-31&Signature=y4POBQFNQpabq0chKvkFJnIzSG5KlAptdj2QRRrypTQ%3D
+    body: AWSAccessKeyId=accesskey&Action=DescribeJobFlows&CreatedAfter=2012-02-09T16%3A32%3A25-08%3A00&SignatureMethod=HmacSHA256&SignatureVersion=2&Timestamp=2012-02-10T00%3A38%3A24Z&Version=2009-03-31&Signature=Svi5Esr6Gy0Aoii07TySRMQfulOwD7hHDjjaxtOtpz8%3D
     headers: 
       Content-Type: 
       - application/x-www-form-urlencoded
@@ -13,39 +13,59 @@ http_interactions:
       message: 
     headers: 
       x-amzn-RequestId: 
-      - af03ea5d-536f-11e1-b6a7-99c0684871a6
+      - 8a46e7e3-537f-11e1-99ba-e50ccb143c32
       Content-Type: 
       - text/xml
-      Transfer-Encoding: 
-      - chunked
+      Content-Length: 
+      - "6823"
       Date: 
-      - Thu, 09 Feb 2012 22:44:54 GMT
+      - Fri, 10 Feb 2012 00:38:23 GMT
     body: |
       <DescribeJobFlowsResponse xmlns="http://elasticmapreduce.amazonaws.com/doc/2009-03-31">
         <DescribeJobFlowsResult>
           <JobFlows>
             <member>
               <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T22:44:33Z</CreationDateTime>
-                <LastStateChangeReason>Starting instances</LastStateChangeReason>
+                <CreationDateTime>2012-02-10T00:38:13Z</CreationDateTime>
                 <State>STARTING</State>
               </ExecutionStatusDetail>
               <AmiVersion>2.0</AmiVersion>
               <BootstrapActions/>
               <SupportedProducts/>
               <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-311CJVL89SOML</JobFlowId>
+              <Steps>
+                <member>
+                  <StepConfig>
+                    <HadoopJarStep>
+                      <Jar>s3://elasticmapreduce/libs/script-runner/script-runner.jar</Jar>
+                      <Args>
+                        <member>s3://elasticmapreduce/libs/hive/hive-script</member>
+                        <member>--base-path</member>
+                        <member>s3://elasticmapreduce/libs/hive/</member>
+                        <member>--install-hive</member>
+                        <member>--hive-versions</member>
+                        <member>0.7.1.1</member>
+                      </Args>
+                      <Properties/>
+                    </HadoopJarStep>
+                    <Name>Hive</Name>
+                    <ActionOnFailure>TERMINATE_JOB_FLOW</ActionOnFailure>
+                  </StepConfig>
+                  <ExecutionStatusDetail>
+                    <CreationDateTime>2012-02-10T00:38:13Z</CreationDateTime>
+                    <State>PENDING</State>
+                  </ExecutionStatusDetail>
+                </member>
+              </Steps>
+              <JobFlowId>j-2VTIG2HXR960E</JobFlowId>
               <Instances>
-                <Placement>
-                  <AvailabilityZone>us-east-1a</AvailabilityZone>
-                </Placement>
+                <Placement/>
                 <MasterInstanceType>m1.small</MasterInstanceType>
                 <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
                 <SlaveInstanceType>c1.medium</SlaveInstanceType>
                 <InstanceGroups>
                   <member>
-                    <CreationDateTime>2012-02-09T22:44:33Z</CreationDateTime>
+                    <CreationDateTime>2012-02-10T00:38:13Z</CreationDateTime>
                     <InstanceRunningCount>0</InstanceRunningCount>
                     <State>PROVISIONING</State>
                     <InstanceRequestCount>1</InstanceRequestCount>
@@ -53,11 +73,11 @@ http_interactions:
                     <Market>ON_DEMAND</Market>
                     <LastStateChangeReason/>
                     <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-2QRA7Q8UHXHAC</InstanceGroupId>
+                    <InstanceGroupId>ig-3K4TEF3R9MEAJ</InstanceGroupId>
                     <Name>Master group</Name>
                   </member>
                   <member>
-                    <CreationDateTime>2012-02-09T22:44:33Z</CreationDateTime>
+                    <CreationDateTime>2012-02-10T00:38:13Z</CreationDateTime>
                     <InstanceRunningCount>0</InstanceRunningCount>
                     <State>PROVISIONING</State>
                     <InstanceRequestCount>1</InstanceRequestCount>
@@ -65,7 +85,7 @@ http_interactions:
                     <Market>ON_DEMAND</Market>
                     <LastStateChangeReason/>
                     <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-3HJRYRFN8XLI6</InstanceGroupId>
+                    <InstanceGroupId>ig-XH4TUKS4MJB1</InstanceGroupId>
                     <Name>Compute group</Name>
                   </member>
                 </InstanceGroups>
@@ -77,71 +97,41 @@ http_interactions:
             </member>
             <member>
               <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T22:43:47Z</CreationDateTime>
+                <CreationDateTime>2012-02-10T00:37:47Z</CreationDateTime>
                 <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
                 <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T22:44:19Z</EndDateTime>
+                <EndDateTime>2012-02-10T00:38:05Z</EndDateTime>
               </ExecutionStatusDetail>
               <AmiVersion>2.0</AmiVersion>
               <BootstrapActions/>
               <SupportedProducts/>
               <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-1CVPRJ2G19X9P</JobFlowId>
-              <Instances>
-                <Placement>
-                  <AvailabilityZone>us-east-1a</AvailabilityZone>
-                </Placement>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:43:47Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:44:17Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-10JAUYYQJQU9B</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:43:47Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:44:18Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-4BHYOYHFVE2Q</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T22:42:52Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T22:43:02Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-FSDLZD791ZAG</JobFlowId>
+              <Steps>
+                <member>
+                  <StepConfig>
+                    <HadoopJarStep>
+                      <Jar>s3://elasticmapreduce/libs/script-runner/script-runner.jar</Jar>
+                      <Args>
+                        <member>s3://elasticmapreduce/libs/hive/hive-script</member>
+                        <member>--base-path</member>
+                        <member>s3://elasticmapreduce/libs/hive/</member>
+                        <member>--install-hive</member>
+                        <member>--hive-versions</member>
+                        <member>0.7.1.1</member>
+                      </Args>
+                      <Properties/>
+                    </HadoopJarStep>
+                    <Name>Hive</Name>
+                    <ActionOnFailure>TERMINATE_JOB_FLOW</ActionOnFailure>
+                  </StepConfig>
+                  <ExecutionStatusDetail>
+                    <CreationDateTime>2012-02-10T00:37:48Z</CreationDateTime>
+                    <LastStateChangeReason>Job terminated</LastStateChangeReason>
+                    <State>CANCELLED</State>
+                  </ExecutionStatusDetail>
+                </member>
+              </Steps>
+              <JobFlowId>j-34WJU2RWFB2P3</JobFlowId>
               <Instances>
                 <Placement/>
                 <MasterInstanceType>m1.small</MasterInstanceType>
@@ -149,883 +139,29 @@ http_interactions:
                 <SlaveInstanceType>c1.medium</SlaveInstanceType>
                 <InstanceGroups>
                   <member>
-                    <CreationDateTime>2012-02-09T22:42:52Z</CreationDateTime>
+                    <CreationDateTime>2012-02-10T00:37:47Z</CreationDateTime>
                     <InstanceRunningCount>0</InstanceRunningCount>
                     <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:43:02Z</EndDateTime>
+                    <EndDateTime>2012-02-10T00:38:05Z</EndDateTime>
                     <InstanceRequestCount>1</InstanceRequestCount>
                     <InstanceType>m1.small</InstanceType>
                     <Market>ON_DEMAND</Market>
                     <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
                     <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-1PSLMEEZ6ZUIU</InstanceGroupId>
+                    <InstanceGroupId>ig-1KSU427IMN4K</InstanceGroupId>
                     <Name>Master group</Name>
                   </member>
                   <member>
-                    <CreationDateTime>2012-02-09T22:42:52Z</CreationDateTime>
+                    <CreationDateTime>2012-02-10T00:37:47Z</CreationDateTime>
                     <InstanceRunningCount>0</InstanceRunningCount>
                     <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:43:02Z</EndDateTime>
+                    <EndDateTime>2012-02-10T00:38:05Z</EndDateTime>
                     <InstanceRequestCount>1</InstanceRequestCount>
                     <InstanceType>c1.medium</InstanceType>
                     <Market>ON_DEMAND</Market>
                     <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
                     <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-3BM6N6XG84HME</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T22:29:33Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <StartDateTime>2012-02-09T22:33:52Z</StartDateTime>
-                <ReadyDateTime>2012-02-09T22:33:52Z</ReadyDateTime>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T22:43:26Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-3VMWTLFEHMILD</JobFlowId>
-              <Instances>
-                <Placement>
-                  <AvailabilityZone>us-east-1a</AvailabilityZone>
-                </Placement>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:29:33Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <StartDateTime>2012-02-09T22:32:51Z</StartDateTime>
-                    <ReadyDateTime>2012-02-09T22:33:47Z</ReadyDateTime>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:43:26Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-JAOMUIMONAW6</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:29:33Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <StartDateTime>2012-02-09T22:33:52Z</StartDateTime>
-                    <ReadyDateTime>2012-02-09T22:33:52Z</ReadyDateTime>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:43:26Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-2ZNJWCDIYCEYZ</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <MasterInstanceId>i-c5b0d1a0</MasterInstanceId>
-                <NormalizedInstanceHours>3</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <MasterPublicDnsName>ec2-50-16-65-86.compute-1.amazonaws.com</MasterPublicDnsName>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T22:29:08Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T22:29:14Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-VEWF5KEPZGWV</JobFlowId>
-              <Instances>
-                <Placement/>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:29:08Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:29:14Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-15ZQ5FGEYJKO9</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:29:08Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:29:14Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-37MYDGQTA9IW4</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T22:28:44Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T22:28:51Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-3MT4YCE71IF3S</JobFlowId>
-              <Instances>
-                <Placement/>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:28:44Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:28:51Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-22KLK1MP7GBK3</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:28:44Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:28:51Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-3FENRXMRHZU0B</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T22:27:45Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T22:28:35Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-1F8GT4ECAHC1V</JobFlowId>
-              <Instances>
-                <Placement>
-                  <AvailabilityZone>us-east-1d</AvailabilityZone>
-                </Placement>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:27:45Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:28:34Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-OHQF6G37LX8C</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:27:45Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:28:34Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-13IH51SEUUY9Y</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T22:27:19Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T22:27:25Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-3577G0GKVQH4L</JobFlowId>
-              <Instances>
-                <Placement/>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:27:19Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:27:25Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-360FISZO1PVWR</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:27:19Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:27:25Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-2OHFCIR62D3WV</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T22:27:04Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T22:27:11Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-2Q2MS6QLZIKQP</JobFlowId>
-              <Instances>
-                <Placement/>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:27:04Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:27:11Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-1AODVOMO44J53</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:27:04Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:27:11Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-33NXLYEB4JOSW</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T22:26:50Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T22:26:58Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-3I4UN0ODJHS2E</JobFlowId>
-              <Instances>
-                <Placement/>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:26:50Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:26:58Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-31S4JVC4047HR</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:26:50Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:26:58Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-17Y87UZ30796X</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T22:26:24Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T22:26:32Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-3V1OLO6IPXBAE</JobFlowId>
-              <Instances>
-                <Placement/>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:26:24Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:26:32Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-36LNQBRWKYGFV</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:26:24Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:26:32Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-202VRE1SY35WC</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T22:26:00Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T22:26:06Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-2MHSJYX6R7S3F</JobFlowId>
-              <Instances>
-                <Placement/>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:26:00Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:26:06Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-2KBUZF2NNFYFA</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:26:00Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:26:06Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-2F816T2EW0JI6</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T22:25:35Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T22:25:44Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-2PV2OSAD3W13A</JobFlowId>
-              <Instances>
-                <Placement/>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:25:35Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:25:44Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-3C9WUJ1BHHDF5</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:25:35Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:25:44Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-E4P155COTII0</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T21:50:09Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <StartDateTime>2012-02-09T21:54:37Z</StartDateTime>
-                <ReadyDateTime>2012-02-09T21:54:37Z</ReadyDateTime>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T22:25:52Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-2NZAO97NQE916</JobFlowId>
-              <Instances>
-                <Placement>
-                  <AvailabilityZone>us-east-1a</AvailabilityZone>
-                </Placement>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T21:50:09Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <StartDateTime>2012-02-09T21:53:13Z</StartDateTime>
-                    <ReadyDateTime>2012-02-09T21:54:32Z</ReadyDateTime>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:25:52Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-3LBNAUW7PE8NA</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T21:50:09Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <StartDateTime>2012-02-09T21:54:37Z</StartDateTime>
-                    <ReadyDateTime>2012-02-09T21:54:37Z</ReadyDateTime>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:25:52Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-3MT4QKCSNHYF9</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <MasterInstanceId>i-cd6f0ea8</MasterInstanceId>
-                <NormalizedInstanceHours>3</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <MasterPublicDnsName>ec2-23-20-45-235.compute-1.amazonaws.com</MasterPublicDnsName>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T21:49:53Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T21:49:59Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-MT46IOXFB08Z</JobFlowId>
-              <Instances>
-                <Placement/>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T21:49:53Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T21:49:59Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-WZ8PFAUQJ186</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T21:49:53Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T21:49:59Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-4JYFMVGFCDYB</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T21:49:36Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T21:49:50Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-1IKV5LIE3SW1V</JobFlowId>
-              <Instances>
-                <Placement/>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T21:49:36Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T21:49:50Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-3F3FB8MDB3FQ0</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T21:49:36Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T21:49:50Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-3J2D9HA3R2HO6</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T21:49:09Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T21:49:19Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-K5IJYIJ600OP</JobFlowId>
-              <Instances>
-                <Placement/>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T21:49:09Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T21:49:19Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-3FSPWZMBSZRS6</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T21:49:09Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T21:49:19Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-2RI3MKWB7CXQ6</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T21:48:43Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T21:48:49Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-3H0E60IQFX3O2</JobFlowId>
-              <Instances>
-                <Placement/>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T21:48:43Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T21:48:49Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-BE60WP33SP71</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T21:48:43Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T21:48:49Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-222DUXO7Q345V</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T21:48:16Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T21:48:23Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-1685H2ITZSJRP</JobFlowId>
-              <Instances>
-                <Placement/>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T21:48:16Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T21:48:23Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-3JKXXXUY2GPPY</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T21:48:16Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T21:48:23Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-2LKC5VMZIB328</InstanceGroupId>
+                    <InstanceGroupId>ig-3GLH2X57LCE1X</InstanceGroupId>
                     <Name>Compute group</Name>
                   </member>
                 </InstanceGroups>
@@ -1038,16 +174,16 @@ http_interactions:
           </JobFlows>
         </DescribeJobFlowsResult>
         <ResponseMetadata>
-          <RequestId>af03ea5d-536f-11e1-b6a7-99c0684871a6</RequestId>
+          <RequestId>8a46e7e3-537f-11e1-99ba-e50ccb143c32</RequestId>
         </ResponseMetadata>
       </DescribeJobFlowsResponse>
 
     http_version: 
-  recorded_at: Thu, 09 Feb 2012 22:44:54 GMT
+  recorded_at: Fri, 10 Feb 2012 00:38:24 GMT
 - request: 
     method: post
     uri: https://elasticmapreduce.amazonaws.com/
-    body: AWSAccessKeyId=accesskey&Action=TerminateJobFlows&JobFlowIds.member.1=j-311CJVL89SOML&JobFlowIds.member.10=j-3I4UN0ODJHS2E&JobFlowIds.member.11=j-3V1OLO6IPXBAE&JobFlowIds.member.12=j-2MHSJYX6R7S3F&JobFlowIds.member.13=j-2PV2OSAD3W13A&JobFlowIds.member.14=j-2NZAO97NQE916&JobFlowIds.member.15=j-MT46IOXFB08Z&JobFlowIds.member.16=j-1IKV5LIE3SW1V&JobFlowIds.member.17=j-K5IJYIJ600OP&JobFlowIds.member.18=j-3H0E60IQFX3O2&JobFlowIds.member.19=j-1685H2ITZSJRP&JobFlowIds.member.2=j-1CVPRJ2G19X9P&JobFlowIds.member.3=j-FSDLZD791ZAG&JobFlowIds.member.4=j-3VMWTLFEHMILD&JobFlowIds.member.5=j-VEWF5KEPZGWV&JobFlowIds.member.6=j-3MT4YCE71IF3S&JobFlowIds.member.7=j-1F8GT4ECAHC1V&JobFlowIds.member.8=j-3577G0GKVQH4L&JobFlowIds.member.9=j-2Q2MS6QLZIKQP&SignatureMethod=HmacSHA256&SignatureVersion=2&Timestamp=2012-02-09T22%3A44%3A54Z&Version=2009-03-31&Signature=Yv%2F58J8OFfwBjdZsQ2SdCQ57GXIOy7jChukTtvWeErk%3D
+    body: AWSAccessKeyId=accesskey&Action=TerminateJobFlows&JobFlowIds.member.1=j-2VTIG2HXR960E&JobFlowIds.member.2=j-34WJU2RWFB2P3&SignatureMethod=HmacSHA256&SignatureVersion=2&Timestamp=2012-02-10T00%3A38%3A24Z&Version=2009-03-31&Signature=gBMsAWX7XhZvHQWNuBV2b8ObigcYxh93Y0%2BEFqQxpRU%3D
     headers: 
       Content-Type: 
       - application/x-www-form-urlencoded
@@ -1057,26 +193,26 @@ http_interactions:
       message: 
     headers: 
       x-amzn-RequestId: 
-      - af5c6a5a-536f-11e1-aa42-8f951ce45bb7
+      - 8a8e7796-537f-11e1-b549-039ed8bc19ac
       Content-Type: 
       - text/xml
       Content-Length: 
       - "225"
       Date: 
-      - Thu, 09 Feb 2012 22:44:54 GMT
+      - Fri, 10 Feb 2012 00:38:24 GMT
     body: |
       <TerminateJobFlowsResponse xmlns="http://elasticmapreduce.amazonaws.com/doc/2009-03-31">
         <ResponseMetadata>
-          <RequestId>af5c6a5a-536f-11e1-aa42-8f951ce45bb7</RequestId>
+          <RequestId>8a8e7796-537f-11e1-b549-039ed8bc19ac</RequestId>
         </ResponseMetadata>
       </TerminateJobFlowsResponse>
 
     http_version: 
-  recorded_at: Thu, 09 Feb 2012 22:44:54 GMT
+  recorded_at: Fri, 10 Feb 2012 00:38:24 GMT
 - request: 
     method: post
     uri: https://elasticmapreduce.amazonaws.com/
-    body: AWSAccessKeyId=accesskey&Action=DescribeJobFlows&CreatedAfter=2012-02-09T13%3A44%3A33-08%3A00&SignatureMethod=HmacSHA256&SignatureVersion=2&Timestamp=2012-02-09T22%3A44%3A54Z&Version=2009-03-31&Signature=buzeAgJRo2LHrNed6%2B3O0Wq7tzn6EnpCswkKwFTX0L8%3D
+    body: AWSAccessKeyId=accesskey&Action=DescribeJobFlows&CreatedAfter=2012-02-09T16%3A32%3A25-08%3A00&SignatureMethod=HmacSHA256&SignatureVersion=2&Timestamp=2012-02-10T00%3A38%3A24Z&Version=2009-03-31&Signature=Svi5Esr6Gy0Aoii07TySRMQfulOwD7hHDjjaxtOtpz8%3D
     headers: 
       Content-Type: 
       - application/x-www-form-urlencoded
@@ -1086,20 +222,20 @@ http_interactions:
       message: 
     headers: 
       x-amzn-RequestId: 
-      - afa2261b-536f-11e1-93b5-3dd599b19e1a
+      - 8ac40687-537f-11e1-b549-039ed8bc19ac
       Content-Type: 
       - text/xml
-      Transfer-Encoding: 
-      - chunked
+      Content-Length: 
+      - "6912"
       Date: 
-      - Thu, 09 Feb 2012 22:44:55 GMT
+      - Fri, 10 Feb 2012 00:38:25 GMT
     body: |
       <DescribeJobFlowsResponse xmlns="http://elasticmapreduce.amazonaws.com/doc/2009-03-31">
         <DescribeJobFlowsResult>
           <JobFlows>
             <member>
               <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T22:44:33Z</CreationDateTime>
+                <CreationDateTime>2012-02-10T00:38:13Z</CreationDateTime>
                 <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
                 <State>SHUTTING_DOWN</State>
               </ExecutionStatusDetail>
@@ -1107,18 +243,39 @@ http_interactions:
               <BootstrapActions/>
               <SupportedProducts/>
               <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-311CJVL89SOML</JobFlowId>
+              <Steps>
+                <member>
+                  <StepConfig>
+                    <HadoopJarStep>
+                      <Jar>s3://elasticmapreduce/libs/script-runner/script-runner.jar</Jar>
+                      <Args>
+                        <member>s3://elasticmapreduce/libs/hive/hive-script</member>
+                        <member>--base-path</member>
+                        <member>s3://elasticmapreduce/libs/hive/</member>
+                        <member>--install-hive</member>
+                        <member>--hive-versions</member>
+                        <member>0.7.1.1</member>
+                      </Args>
+                      <Properties/>
+                    </HadoopJarStep>
+                    <Name>Hive</Name>
+                    <ActionOnFailure>TERMINATE_JOB_FLOW</ActionOnFailure>
+                  </StepConfig>
+                  <ExecutionStatusDetail>
+                    <CreationDateTime>2012-02-10T00:38:13Z</CreationDateTime>
+                    <State>PENDING</State>
+                  </ExecutionStatusDetail>
+                </member>
+              </Steps>
+              <JobFlowId>j-2VTIG2HXR960E</JobFlowId>
               <Instances>
-                <Placement>
-                  <AvailabilityZone>us-east-1a</AvailabilityZone>
-                </Placement>
+                <Placement/>
                 <MasterInstanceType>m1.small</MasterInstanceType>
                 <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
                 <SlaveInstanceType>c1.medium</SlaveInstanceType>
                 <InstanceGroups>
                   <member>
-                    <CreationDateTime>2012-02-09T22:44:33Z</CreationDateTime>
+                    <CreationDateTime>2012-02-10T00:38:13Z</CreationDateTime>
                     <InstanceRunningCount>0</InstanceRunningCount>
                     <State>PROVISIONING</State>
                     <InstanceRequestCount>1</InstanceRequestCount>
@@ -1126,11 +283,11 @@ http_interactions:
                     <Market>ON_DEMAND</Market>
                     <LastStateChangeReason/>
                     <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-2QRA7Q8UHXHAC</InstanceGroupId>
+                    <InstanceGroupId>ig-3K4TEF3R9MEAJ</InstanceGroupId>
                     <Name>Master group</Name>
                   </member>
                   <member>
-                    <CreationDateTime>2012-02-09T22:44:33Z</CreationDateTime>
+                    <CreationDateTime>2012-02-10T00:38:13Z</CreationDateTime>
                     <InstanceRunningCount>0</InstanceRunningCount>
                     <State>PROVISIONING</State>
                     <InstanceRequestCount>1</InstanceRequestCount>
@@ -1138,7 +295,7 @@ http_interactions:
                     <Market>ON_DEMAND</Market>
                     <LastStateChangeReason/>
                     <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-3HJRYRFN8XLI6</InstanceGroupId>
+                    <InstanceGroupId>ig-XH4TUKS4MJB1</InstanceGroupId>
                     <Name>Compute group</Name>
                   </member>
                 </InstanceGroups>
@@ -1150,71 +307,41 @@ http_interactions:
             </member>
             <member>
               <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T22:43:47Z</CreationDateTime>
+                <CreationDateTime>2012-02-10T00:37:47Z</CreationDateTime>
                 <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
                 <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T22:44:19Z</EndDateTime>
+                <EndDateTime>2012-02-10T00:38:05Z</EndDateTime>
               </ExecutionStatusDetail>
               <AmiVersion>2.0</AmiVersion>
               <BootstrapActions/>
               <SupportedProducts/>
               <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-1CVPRJ2G19X9P</JobFlowId>
-              <Instances>
-                <Placement>
-                  <AvailabilityZone>us-east-1a</AvailabilityZone>
-                </Placement>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:43:47Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:44:17Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-10JAUYYQJQU9B</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:43:47Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:44:18Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-4BHYOYHFVE2Q</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T22:42:52Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T22:43:02Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-FSDLZD791ZAG</JobFlowId>
+              <Steps>
+                <member>
+                  <StepConfig>
+                    <HadoopJarStep>
+                      <Jar>s3://elasticmapreduce/libs/script-runner/script-runner.jar</Jar>
+                      <Args>
+                        <member>s3://elasticmapreduce/libs/hive/hive-script</member>
+                        <member>--base-path</member>
+                        <member>s3://elasticmapreduce/libs/hive/</member>
+                        <member>--install-hive</member>
+                        <member>--hive-versions</member>
+                        <member>0.7.1.1</member>
+                      </Args>
+                      <Properties/>
+                    </HadoopJarStep>
+                    <Name>Hive</Name>
+                    <ActionOnFailure>TERMINATE_JOB_FLOW</ActionOnFailure>
+                  </StepConfig>
+                  <ExecutionStatusDetail>
+                    <CreationDateTime>2012-02-10T00:37:48Z</CreationDateTime>
+                    <LastStateChangeReason>Job terminated</LastStateChangeReason>
+                    <State>CANCELLED</State>
+                  </ExecutionStatusDetail>
+                </member>
+              </Steps>
+              <JobFlowId>j-34WJU2RWFB2P3</JobFlowId>
               <Instances>
                 <Placement/>
                 <MasterInstanceType>m1.small</MasterInstanceType>
@@ -1222,883 +349,29 @@ http_interactions:
                 <SlaveInstanceType>c1.medium</SlaveInstanceType>
                 <InstanceGroups>
                   <member>
-                    <CreationDateTime>2012-02-09T22:42:52Z</CreationDateTime>
+                    <CreationDateTime>2012-02-10T00:37:47Z</CreationDateTime>
                     <InstanceRunningCount>0</InstanceRunningCount>
                     <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:43:02Z</EndDateTime>
+                    <EndDateTime>2012-02-10T00:38:05Z</EndDateTime>
                     <InstanceRequestCount>1</InstanceRequestCount>
                     <InstanceType>m1.small</InstanceType>
                     <Market>ON_DEMAND</Market>
                     <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
                     <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-1PSLMEEZ6ZUIU</InstanceGroupId>
+                    <InstanceGroupId>ig-1KSU427IMN4K</InstanceGroupId>
                     <Name>Master group</Name>
                   </member>
                   <member>
-                    <CreationDateTime>2012-02-09T22:42:52Z</CreationDateTime>
+                    <CreationDateTime>2012-02-10T00:37:47Z</CreationDateTime>
                     <InstanceRunningCount>0</InstanceRunningCount>
                     <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:43:02Z</EndDateTime>
+                    <EndDateTime>2012-02-10T00:38:05Z</EndDateTime>
                     <InstanceRequestCount>1</InstanceRequestCount>
                     <InstanceType>c1.medium</InstanceType>
                     <Market>ON_DEMAND</Market>
                     <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
                     <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-3BM6N6XG84HME</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T22:29:33Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <StartDateTime>2012-02-09T22:33:52Z</StartDateTime>
-                <ReadyDateTime>2012-02-09T22:33:52Z</ReadyDateTime>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T22:43:26Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-3VMWTLFEHMILD</JobFlowId>
-              <Instances>
-                <Placement>
-                  <AvailabilityZone>us-east-1a</AvailabilityZone>
-                </Placement>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:29:33Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <StartDateTime>2012-02-09T22:32:51Z</StartDateTime>
-                    <ReadyDateTime>2012-02-09T22:33:47Z</ReadyDateTime>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:43:26Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-JAOMUIMONAW6</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:29:33Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <StartDateTime>2012-02-09T22:33:52Z</StartDateTime>
-                    <ReadyDateTime>2012-02-09T22:33:52Z</ReadyDateTime>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:43:26Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-2ZNJWCDIYCEYZ</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <MasterInstanceId>i-c5b0d1a0</MasterInstanceId>
-                <NormalizedInstanceHours>3</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <MasterPublicDnsName>ec2-50-16-65-86.compute-1.amazonaws.com</MasterPublicDnsName>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T22:29:08Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T22:29:14Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-VEWF5KEPZGWV</JobFlowId>
-              <Instances>
-                <Placement/>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:29:08Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:29:14Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-15ZQ5FGEYJKO9</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:29:08Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:29:14Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-37MYDGQTA9IW4</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T22:28:44Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T22:28:51Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-3MT4YCE71IF3S</JobFlowId>
-              <Instances>
-                <Placement/>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:28:44Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:28:51Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-22KLK1MP7GBK3</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:28:44Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:28:51Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-3FENRXMRHZU0B</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T22:27:45Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T22:28:35Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-1F8GT4ECAHC1V</JobFlowId>
-              <Instances>
-                <Placement>
-                  <AvailabilityZone>us-east-1d</AvailabilityZone>
-                </Placement>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:27:45Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:28:34Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-OHQF6G37LX8C</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:27:45Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:28:34Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-13IH51SEUUY9Y</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T22:27:19Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T22:27:25Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-3577G0GKVQH4L</JobFlowId>
-              <Instances>
-                <Placement/>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:27:19Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:27:25Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-360FISZO1PVWR</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:27:19Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:27:25Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-2OHFCIR62D3WV</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T22:27:04Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T22:27:11Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-2Q2MS6QLZIKQP</JobFlowId>
-              <Instances>
-                <Placement/>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:27:04Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:27:11Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-1AODVOMO44J53</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:27:04Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:27:11Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-33NXLYEB4JOSW</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T22:26:50Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T22:26:58Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-3I4UN0ODJHS2E</JobFlowId>
-              <Instances>
-                <Placement/>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:26:50Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:26:58Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-31S4JVC4047HR</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:26:50Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:26:58Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-17Y87UZ30796X</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T22:26:24Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T22:26:32Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-3V1OLO6IPXBAE</JobFlowId>
-              <Instances>
-                <Placement/>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:26:24Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:26:32Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-36LNQBRWKYGFV</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:26:24Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:26:32Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-202VRE1SY35WC</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T22:26:00Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T22:26:06Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-2MHSJYX6R7S3F</JobFlowId>
-              <Instances>
-                <Placement/>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:26:00Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:26:06Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-2KBUZF2NNFYFA</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:26:00Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:26:06Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-2F816T2EW0JI6</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T22:25:35Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T22:25:44Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-2PV2OSAD3W13A</JobFlowId>
-              <Instances>
-                <Placement/>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:25:35Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:25:44Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-3C9WUJ1BHHDF5</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T22:25:35Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:25:44Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-E4P155COTII0</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T21:50:09Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <StartDateTime>2012-02-09T21:54:37Z</StartDateTime>
-                <ReadyDateTime>2012-02-09T21:54:37Z</ReadyDateTime>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T22:25:52Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-2NZAO97NQE916</JobFlowId>
-              <Instances>
-                <Placement>
-                  <AvailabilityZone>us-east-1a</AvailabilityZone>
-                </Placement>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T21:50:09Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <StartDateTime>2012-02-09T21:53:13Z</StartDateTime>
-                    <ReadyDateTime>2012-02-09T21:54:32Z</ReadyDateTime>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:25:52Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-3LBNAUW7PE8NA</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T21:50:09Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <StartDateTime>2012-02-09T21:54:37Z</StartDateTime>
-                    <ReadyDateTime>2012-02-09T21:54:37Z</ReadyDateTime>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T22:25:52Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-3MT4QKCSNHYF9</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <MasterInstanceId>i-cd6f0ea8</MasterInstanceId>
-                <NormalizedInstanceHours>3</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <MasterPublicDnsName>ec2-23-20-45-235.compute-1.amazonaws.com</MasterPublicDnsName>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T21:49:53Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T21:49:59Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-MT46IOXFB08Z</JobFlowId>
-              <Instances>
-                <Placement/>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T21:49:53Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T21:49:59Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-WZ8PFAUQJ186</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T21:49:53Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T21:49:59Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-4JYFMVGFCDYB</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T21:49:36Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T21:49:50Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-1IKV5LIE3SW1V</JobFlowId>
-              <Instances>
-                <Placement/>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T21:49:36Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T21:49:50Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-3F3FB8MDB3FQ0</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T21:49:36Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T21:49:50Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-3J2D9HA3R2HO6</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T21:49:09Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T21:49:19Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-K5IJYIJ600OP</JobFlowId>
-              <Instances>
-                <Placement/>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T21:49:09Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T21:49:19Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-3FSPWZMBSZRS6</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T21:49:09Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T21:49:19Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-2RI3MKWB7CXQ6</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T21:48:43Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T21:48:49Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-3H0E60IQFX3O2</JobFlowId>
-              <Instances>
-                <Placement/>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T21:48:43Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T21:48:49Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-BE60WP33SP71</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T21:48:43Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T21:48:49Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-222DUXO7Q345V</InstanceGroupId>
-                    <Name>Compute group</Name>
-                  </member>
-                </InstanceGroups>
-                <NormalizedInstanceHours>0</NormalizedInstanceHours>
-                <HadoopVersion>0.20.205</HadoopVersion>
-                <InstanceCount>2</InstanceCount>
-                <TerminationProtected>false</TerminationProtected>
-              </Instances>
-            </member>
-            <member>
-              <ExecutionStatusDetail>
-                <CreationDateTime>2012-02-09T21:48:16Z</CreationDateTime>
-                <LastStateChangeReason>Terminated by user request</LastStateChangeReason>
-                <State>TERMINATED</State>
-                <EndDateTime>2012-02-09T21:48:23Z</EndDateTime>
-              </ExecutionStatusDetail>
-              <AmiVersion>2.0</AmiVersion>
-              <BootstrapActions/>
-              <SupportedProducts/>
-              <Name>Managed Buzzoink process : Main EMR process type =&gt; hive</Name>
-              <Steps/>
-              <JobFlowId>j-1685H2ITZSJRP</JobFlowId>
-              <Instances>
-                <Placement/>
-                <MasterInstanceType>m1.small</MasterInstanceType>
-                <KeepJobFlowAliveWhenNoSteps>true</KeepJobFlowAliveWhenNoSteps>
-                <SlaveInstanceType>c1.medium</SlaveInstanceType>
-                <InstanceGroups>
-                  <member>
-                    <CreationDateTime>2012-02-09T21:48:16Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T21:48:23Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>m1.small</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>MASTER</InstanceRole>
-                    <InstanceGroupId>ig-3JKXXXUY2GPPY</InstanceGroupId>
-                    <Name>Master group</Name>
-                  </member>
-                  <member>
-                    <CreationDateTime>2012-02-09T21:48:16Z</CreationDateTime>
-                    <InstanceRunningCount>0</InstanceRunningCount>
-                    <State>ENDED</State>
-                    <EndDateTime>2012-02-09T21:48:23Z</EndDateTime>
-                    <InstanceRequestCount>1</InstanceRequestCount>
-                    <InstanceType>c1.medium</InstanceType>
-                    <Market>ON_DEMAND</Market>
-                    <LastStateChangeReason>Job flow terminated</LastStateChangeReason>
-                    <InstanceRole>CORE</InstanceRole>
-                    <InstanceGroupId>ig-2LKC5VMZIB328</InstanceGroupId>
+                    <InstanceGroupId>ig-3GLH2X57LCE1X</InstanceGroupId>
                     <Name>Compute group</Name>
                   </member>
                 </InstanceGroups>
@@ -2111,10 +384,10 @@ http_interactions:
           </JobFlows>
         </DescribeJobFlowsResult>
         <ResponseMetadata>
-          <RequestId>afa2261b-536f-11e1-93b5-3dd599b19e1a</RequestId>
+          <RequestId>8ac40687-537f-11e1-b549-039ed8bc19ac</RequestId>
         </ResponseMetadata>
       </DescribeJobFlowsResponse>
 
     http_version: 
-  recorded_at: Thu, 09 Feb 2012 22:44:55 GMT
+  recorded_at: Fri, 10 Feb 2012 00:38:25 GMT
 recorded_with: VCR 2.0.0.rc1

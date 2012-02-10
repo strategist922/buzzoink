@@ -100,6 +100,8 @@ module Buzzoink
       #
       def kill_all
         jobs = get_managed_jobs
+        return false if jobs.blank?
+
         ids = jobs.map(&:id)
         kill_jobs ids
       end
@@ -137,7 +139,49 @@ module Buzzoink
         conf = Buzzoink.configure
         job = Buzzoink.emr.run_job_flow(conf.full_name(:type => options[:type]), conf.full_emr_configuration)
 
+        # Add appropriate step for interactive job
+        if options[:type] == :hive
+          Buzzoink.emr.add_job_flow_steps(job.body['JobFlowId'], {'Steps' => [hive_step]})
+        elsif options[:type] == :pig
+          Buzzoink.emr.add_job_flow_steps(job.body['JobFlowId'], {'Steps' => [pig_step]})
+        else
+          raise Buzzoink::Error, "Current type is invalid :: #{options[:type]}"
+        end
+
         get job.body['JobFlowId']
+      end
+
+      # :nodoc:
+      def hive_step
+        {
+          'Name' => 'Hive',
+          'ActionOnFailure' => 'TERMINATE_JOB_FLOW',
+          'HadoopJarStep' => {
+            'Jar' => 's3://elasticmapreduce/libs/script-runner/script-runner.jar',
+            'Args' => [
+              's3://elasticmapreduce/libs/hive/hive-script',
+              '--base-path', 's3://elasticmapreduce/libs/hive/',
+              '--install-hive',
+              '--hive-versions', '0.7.1.1'
+            ]
+          }
+        }
+      end
+
+      # :nodoc:
+      def pig_step
+        {
+          'Name' => 'Pig',
+          'ActionOnFailure' => 'TERMINATE_JOB_FLOW',
+          'HadoopJarStep' => {
+            'Jar' => 's3://elasticmapreduce/libs/script-runner/script-runner.jar',
+            'Args' => [
+              's3://elasticmapreduce/libs/pig/pig-script',
+              '--base-path',  's3://elasticmapreduce/libs/pig/',
+              '--install-pig'
+            ]
+          }
+        }
       end
 
       # Some helper methods are included for each type of 
@@ -194,6 +238,10 @@ module Buzzoink
     # is ready for operation
     def ready?
       READY_STATES.include?(state)
+    end
+
+    def steps
+      body['Steps']
     end
 
     # Address to use for connection
