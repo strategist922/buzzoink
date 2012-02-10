@@ -35,4 +35,8 @@ describe 'Buzzoink::Job instance methods' do
   it 'should be able to report its termination status' do
     @job.termination_protected?.should be_false
   end
+
+  pending 'should be able to say what job type it is' do
+    @job.type.should == :hive
+  end
 end

@@ -57,6 +57,10 @@ describe Buzzoink::Job, :vcr do
     end
   end
 
+  describe 'job flow steps' do
+
+  end
+
   it 'should have a method to start a hive job' do
     Buzzoink::Job.should_receive(:start).with(:type => :hive)
 
