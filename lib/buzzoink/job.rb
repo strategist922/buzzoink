@@ -1,4 +1,12 @@
 module Buzzoink
+  # A representation of the job in Amazon's EMR system.  There are a few dynamic methods
+  # created in this object. The are basically candy backed by another method in this class
+  #
+  # [start_hive] start(:type => :hive)
+  # [start_pig] start(:type => :pig)
+  # [find_or_start_hive] find_or_start(:type => :hive)
+  # [find_or_start_pig] find_or_start(:type => :pig)
+  #
   class Job
     attr_reader :job_flow_id
     attr_reader :body
@@ -190,7 +198,6 @@ module Buzzoink
       # @example
       #   j = Buzzoink::Job.start_hive
       #   j = Buzzoink::Job.find_or_start_pig
-      #
       #
       [:hive, :pig, :streaming].each do | type |
         self.class_eval <<-RUBY
