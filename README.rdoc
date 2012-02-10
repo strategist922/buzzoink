@@ -10,7 +10,7 @@ machine configurations
 
 [test] Very small, 1 master and 1 slave.  It basically for running tests on the gem
 
-[development] Around 10 slaves.  It's for test small jobs
+[development] Around 10 slaves.  It's for testing small EMR jobs
 
 [production] At least 20 machines.  Up to 60 if the spot reservations come online
 
