@@ -4,6 +4,8 @@ A very simple interface for Amazon's EMR service.  It will start interactive Hiv
 It only exposes a few pieces of information like state, name and DNS name for the master machine.  It also allows only a few 
 machine configurations
 
+[![Build Status](https://secure.travis-ci.org/Raybeam/buzzoink.png?branch=master)](http://travis-ci.org/Raybeam/buzzoink)
+
 == Cluster sizes
 
 [test] Very small, 1 master and 1 slave.  It basically for running tests on the gem
