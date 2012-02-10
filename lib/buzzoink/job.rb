@@ -253,5 +253,14 @@ module Buzzoink
     def termination_protected?
       body['Instances']['TerminationProtected'] == 'true'
     end
+
+    # The type of job (e.g. Hive, Pig, etc)
+    def type
+      if body['Name'] =~ /type => (\w+)/
+        return $1.to_sym
+      end
+
+      return nil
+    end
   end
 end
