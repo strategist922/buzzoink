@@ -56,11 +56,11 @@ module Buzzoink
     #     c.epoch = DateTime.today.ago(3.weeks)
     #   end
     #
-    # @default One day ago
+    # @default One week ago
     #
     attr_writer :epoch
     def epoch
-      @epoch ||= DateTime.now.ago(1.day)
+      @epoch ||= DateTime.now.ago(1.week)
       unless @epoch.respond_to?(:iso8601)
         @epoch = Time.parse(@epoch.to_s)
       end
